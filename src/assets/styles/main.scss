@@ -1,5 +1,3 @@
-@import './colors.scss';
-
 html,
 body,
 p,
@@ -8,10 +6,17 @@ input,
 header,
 section,
 footer,
-main {
+main,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   padding: 0;
   text-decoration: none;
+  font-family: Nunito;
 
   &:focus {
     outline: none;
