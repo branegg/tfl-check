@@ -1,25 +1,29 @@
 <template>
-  <div class="cabs">
-    <button v-on:click="getCabs">Search</button>
+  <main class="cabs">
+    <!-- <button v-on:click="getCabs">Search</button>
     <input v-model="lat" placeholder="lat" />
-    <input v-model="lon" placeholder="lon" />
-    <p v-if="isLoading">loading</p>
-    <p>{{cabs}}</p>
-  </div>
+    <input v-model="lon" placeholder="lon" />-->
+    <!-- <p v-if="isLoading">loading</p> -->
+    <!-- <p>{{cabs}}</p> -->
+    <GoogleMap />
+  </main>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import GoogleMap from "@/components/GoogleMap";
 
 export default {
   name: "Cabs",
-  data: () => ({ lat: 51.506287, lon: -0.127788 }),
-  computed: { ...mapState(["isLoading", "cabs"]) },
-  methods: {
-    getCabs() {
-      const { lat, lon } = this;
-      this.$store.dispatch("getCabs", { lat, lon });
-    }
-  }
+  components: { GoogleMap }
 };
 </script>
+
+<style lang="scss">
+.cabs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+</style>
