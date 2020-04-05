@@ -1,0 +1,19 @@
+@import './colors.scss';
+
+html,
+body,
+p,
+a,
+input,
+header,
+section,
+footer,
+main {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+
+  &:focus {
+    outline: none;
+  }
+}
