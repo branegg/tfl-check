@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import axios from 'axios';
+import CabsApi from './../services/api/Cabs';
 
 Vue.use(Vuex);
 
@@ -21,7 +21,7 @@ export default new Vuex.Store({
   actions: {
     getCabs({ commit }, { lat, lon }) {
       commit('loading', true);
-      axios.get(`http://localhost:8000/getCabs?lat=${lat}&lon=${lon}`).then((res) => {
+      CabsApi.fetchCabs(lat, lon).then((res) => {
         commit('SAVE_CABS', res.data);
         commit('loading', false);
       });

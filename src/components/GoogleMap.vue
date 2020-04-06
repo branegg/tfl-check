@@ -45,18 +45,6 @@ export default {
     setPlace(place) {
       this.currentPlace = place;
     },
-    addMarker() {
-      if (this.currentPlace) {
-        const marker = {
-          lat: this.currentPlace.geometry.location.lat(),
-          lng: this.currentPlace.geometry.location.lng()
-        };
-        this.markers.push({ position: marker });
-        this.places.push(this.currentPlace);
-        this.center = marker;
-        this.currentPlace = null;
-      }
-    },
     renderMarkers() {
       this.markers = [];
       this.cabs.Operators.OperatorList.map(operator => {
