@@ -21,10 +21,16 @@ export default new Vuex.Store({
   actions: {
     getCabs({ commit }, { lat, lon }) {
       commit('loading', true);
-      CabsApi.fetchCabs(lat, lon).then((res) => {
-        commit('SAVE_CABS', res.data);
-        commit('loading', false);
-      });
+      CabsApi.fetchCabs(lat, lon)
+        .then((res) => {
+          commit('SAVE_CABS', res.data);
+          commit('loading', false);
+        })
+        .catch((error) => {
+          console.log(error);
+          alert('Something went wrong.');
+          commit('loading', false);
+        });
     },
   },
   modules: {},

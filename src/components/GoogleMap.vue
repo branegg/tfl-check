@@ -1,21 +1,23 @@
 <template>
-  <section class="map__wrapper">
-    <transition name="fade">
-      <div class="map__loading" v-if="isLoading">
-        <img src="./../assets/images/loading.svg" alt="Loading..." />
-      </div>
-    </transition>
+  <section class="map__container">
     <h2 class="map__header">Click anywhere on the map to see all of the available cabs in this area!</h2>
-    <gmap-map class="map" :center="center" :zoom="12" @click="(e) => getCabs(e)">
-      <gmap-marker
-        :key="index"
-        v-for="(m, index) in markers"
-        :position="m.position"
-        @click="center=m.position"
-        :icon="{ url: require('./../assets/images/taxi.png'), scaledSize: {width: 50, height: 50},}"
-        class="map__marker"
-      ></gmap-marker>
-    </gmap-map>
+    <div class="map__wrapper">
+      <transition name="fade">
+        <div class="map__loading" v-if="isLoading">
+          <img src="./../assets/images/loading.svg" alt="Loading..." />
+        </div>
+      </transition>
+      <gmap-map class="map" :center="center" :zoom="12" @click="(e) => getCabs(e)">
+        <gmap-marker
+          :key="index"
+          v-for="(m, index) in markers"
+          :position="m.position"
+          @click="center=m.position"
+          :icon="{ url: require('./../assets/images/taxi.png'), scaledSize: {width: 50, height: 50},}"
+          class="map__marker"
+        ></gmap-marker>
+      </gmap-map>
+    </div>
   </section>
 </template>
 
@@ -71,15 +73,18 @@ export default {
     margin-bottom: 20px;
   }
 
-  &__wrapper {
+  &__container {
     margin-top: 60px;
-    position: relative;
-    width: 1000px;
-    height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+  }
+
+  &__wrapper {
+    position: relative;
+    width: 1000px;
+    height: 600px;
   }
 
   &__loading {
